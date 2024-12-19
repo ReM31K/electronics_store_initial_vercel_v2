@@ -18,10 +18,10 @@ Sklep z Częściami Komputerowymi to platforma internetowa, która upraszcza pro
 - Backend: Laravel
 - Baza Danych: MariaDB
 - Middleware: Inertia.js
+- Platforma hostingowa: Heroku
 
 ### Schemat Bazy Danych
 Baza danych została zaprojektowana do efektywnego zarządzania produktami, kategoriami, użytkownikami i zamówieniami. Poniżej przedstawiono główne tabele:
-
 1. Users: Przechowuje informacje o użytkownikach, w tym dane OAuth dla uwierzytelniania Google.
 2. Products: Zawiera szczegóły dotyczące komponentów, takie jak nazwa, opis, cena i obrazek.
 3. Categories: Organizuje produkty w logiczne grupy.
@@ -33,9 +33,12 @@ Baza danych została zaprojektowana do efektywnego zarządzania produktami, kate
   - Standardowa rejestracja za pomocą e-maila/hasła.
   - Funkcjonalność resetowania hasła i aktualizacji adresu e-mail.
 - Kategorie Produktów
+  - Dostępne bardziej szczegółowe informacje o produkcie po naciśnięciu na pewny przycisk.
 - Wyszukiwanie i Filtrowanie:
   - Wielopoziomowe filtry oparte na różnych atrybutach produktów.
   - Opcje sortowania według ceny kategorii.
+  - Wyszukiwanie pewnego produktu po nazwie.
+  
 
 ### Wyzwania Implementacyjne
 - Integracja OAuth: Konfiguracja API Google dla płynnego uwierzytelniania wymagała właściwego obsługi przekierowań i bezpiecznego przechowywania tokenów.
@@ -44,21 +47,26 @@ Baza danych została zaprojektowana do efektywnego zarządzania produktami, kate
   - Rozwiązanie: Dodano indeksy do krytycznych kolumn i zoptymalizowano strukturę zapytań.
 - Złożoność Frontendu: Dynamiczne filtrowanie i sortowanie produktów w czasie rzeczywistym wymagało zaawansowanego zarządzania stanem aplikacji.
   - Rozwiązanie: Wykorzystano hook useStatex do zarządzania stanem, co pozwoliło na płynną obsługę interfejsu użytkownika. Dodatkowo zoptymalizowano komponenty React, aby zmniejszyć zużycie zasobów.
+- Mieliśmy istotny problem z wdrożeniem projektu na platformę hostingową Heroku spowodowanym użyciem języka programowania PHP, który wymagał dodatkowej konfiguracji środowiska, w tym poprawnego ustawienia 
+  buildpacks i zależności.
+  - Rozwiązanie: Dostosowanie konfiguracji Heroku oraz zoptymalizowanie procesu budowania projektu.
 
 ### Testowanie
 - Testy Automatyczne:
-  - Testy jednostkowe logiki backendu przy użyciu PHPUnit.
-  - Testy frontendu przy użyciu Jest i React Testing Library.
+  - Testy routingowe
 - Testy Manualne:
-  - Przeprowadzono testy ręczne dla komponentów UI i przepływów płatności.
+  - Przeprowadzono testy ręczne dla komponentów UI 
 - Testy Bezpieczeństwa:
-  - Zweryfikowano bezpieczeństwo przepływu OAuth i przeprowadzono podstawowe testy penetracyjne w celu wykrycia luk.
-
-### Zrzuty Ekranu
+  - Zweryfikowano bezpieczeństwo przepływu OAuth
 
 ## Wdrożenie
-
-
+Ten projekt został zbudowany w oparciu o Laravel z wykorzystaniem Inertia.js i Vite do integracji React. Projekt został wdrożony na Platformę Hostingową - **Heroku**. 
+Projekt korzysta z bazy danych MariaDB, która jest skonfigurowana za pomocą zmiennych środowiskowych.
+- Proces wdrożenia obejmuje:
+1. Konfigurację środowiska.
+2. Budowanie i wdrażanie zasobów frontendowych.
+3. Konfigurację zmiennych środowiskowych.
+4. Użycie Heroku buildpacks do integracji PHP i Node.js.
 
 
 
