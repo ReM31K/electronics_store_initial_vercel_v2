@@ -17,7 +17,7 @@ return [
     */
 
     // 'default' => env('DB_CONNECTION', 'sqlite'),
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('mysql://root:23ch2amRoPpYcKWaN5CF6BTWwtZDhnsm@8o03ic.stackhero-network.com:3310/root?useSSL=true&requireSSL=true', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
