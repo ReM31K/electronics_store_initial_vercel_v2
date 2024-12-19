@@ -17,7 +17,7 @@ return [
     */
 
     // 'default' => env('DB_CONNECTION', 'sqlite'),
-    'default' => env('mysql://root:23ch2amRoPpYcKWaN5CF6BTWwtZDhnsm@8o03ic.stackhero-network.com:3310/root?useSSL=true&requireSSL=true', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -63,13 +63,15 @@ return [
         //     ]) : [],
         // ],
 
+
+
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('STACKHERO_MARIADB_HOST'),
             'port' => env('STACKHERO_MARIADB_PORT'),
             'username' => env('STACKHERO_MARIADB_USER'),
-            'password' => env('STACKHERO_MARIADB_PASSWORD'),
-            'database' => env('STACKHERO_MARIADB_USER'),
+            'password' => env('STACKHERO_MARIADB_ROOT_PASSWORD '),
+            'database' => env('STACKHERO_MARIADB_DATABASE', 'root'),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
