@@ -17,7 +17,9 @@ return [
     */
 
     // 'default' => env('DB_CONNECTION', 'sqlite'),
-    'default' => env('DB_CONNECTION', 'mysql'),
+    // 'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => 'mysql',
+
 
     /*
     |--------------------------------------------------------------------------
@@ -65,29 +67,48 @@ return [
 
 
 
+        // 'mysql' => [
+        //     'driver' => 'mysql',
+        //     'host' => env('STACKHERO_MARIADB_HOST'),
+        //     'port' => env('STACKHERO_MARIADB_PORT'),
+        //     'username' => env('STACKHERO_MARIADB_USER'),
+        //     'password' => env('STACKHERO_MARIADB_ROOT_PASSWORD '),
+        //     'database' => env('STACKHERO_MARIADB_DATABASE', 'root'),
+        //     'charset' => 'utf8mb4',
+        //     'collation' => 'utf8mb4_unicode_ci',
+        //     'prefix' => '',
+        //     'prefix_indexes' => true,
+        //     'strict' => true,
+        //     'engine' => null,
+        //     'sslmode' => 'require',
+        //     'options' => extension_loaded('pdo_mysql')
+        //         ? array_filter([
+        //             // See above if you have an error like "Uncaught PDOException: PDO::__construct(): SSL operation failed with code 1. OpenSSL Error messages: error:0A000086:SSL routines::certificate verify failed".
+        //             PDO::MYSQL_ATTR_SSL_CAPATH => '/etc/ssl/certs/',
+        //             // PDO::MYSQL_ATTR_SSL_CA => 'isrgrootx1.pem',
+        //             PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
+        //         ])
+        //         : [],
+        // ],
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('STACKHERO_MARIADB_HOST'),
-            'port' => env('STACKHERO_MARIADB_PORT'),
-            'username' => env('STACKHERO_MARIADB_USER'),
-            'password' => env('STACKHERO_MARIADB_ROOT_PASSWORD '),
-            'database' => env('STACKHERO_MARIADB_DATABASE', 'root'),
+            'host' => '8o03ic.stackhero-network.com', // Replace with your host
+            'port' => '3310',                         // Port from StackHero
+            'database' => 'root',                    // Database name
+            'username' => 'root',                    // Username
+            'password' => '23ch2amRoPpYcKWaN5CF6BTWwtZDhnsm', // Password
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
-            'sslmode' => 'require',
-            'options' => extension_loaded('pdo_mysql')
-                ? array_filter([
-                    // See above if you have an error like "Uncaught PDOException: PDO::__construct(): SSL operation failed with code 1. OpenSSL Error messages: error:0A000086:SSL routines::certificate verify failed".
-                    PDO::MYSQL_ATTR_SSL_CAPATH => '/etc/ssl/certs/',
-                    // PDO::MYSQL_ATTR_SSL_CA => 'isrgrootx1.pem',
-                    PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
-                ])
-                : [],
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
+                PDO::MYSQL_ATTR_SSL_CAPATH => '/etc/ssl/certs/', // Path to SSL certificates
+            ]) : [],
         ],
+
 
         'mariadb' => [
             'driver' => 'mariadb',
